@@ -4,10 +4,12 @@
 
 (defun print-result ()
   (receive
-    (`#(,pid ,msg)
+    ((tuple pid msg)
       (io:format "Received message: '~s'~n" (list msg))
       (io:format "Sending message to process ~p ...~n" (list pid))
-      (! pid `#(,msg))
+
+      ;; pass on message to pid
+      (! pid (tuple msg))
       (print-result))))
 
 (defun send-message (calling-pid msg)
