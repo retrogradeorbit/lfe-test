@@ -1,4 +1,4 @@
-(defmodule tut2
+(defmodule tut
   (export (fac 1)))
 
 (defun fac
